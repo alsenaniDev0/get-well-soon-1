@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <main class="get-well-page theme-{{theme}} show-person-{{showPersoneImage}} show-icon-{{showIcon}}">
+
+        <div class="page-pattern" aria-hidden="true"></div>
+
+        <div class="bubble bubble-1" aria-hidden="true"></div>
+        <div class="bubble bubble-2" aria-hidden="true"></div>
+        <div class="bubble bubble-3" aria-hidden="true"></div>
+        <div class="bubble bubble-4" aria-hidden="true"></div>
+        <div class="bubble bubble-5" aria-hidden="true"></div>
+
+        <section class="get-well-card">
+
+            <div class="card-decoration card-decoration-1" aria-hidden="true">🌿</div>
+            <div class="card-decoration card-decoration-2" aria-hidden="true">✨</div>
+
+            <div class="top-label">
+                <span class="top-icon">{{icon}}</span>
+                <strong>{{topLabel}}</strong>
+            </div>
+
+            <div class="photo-wrap">
+                <div class="photo-ring">
+                    <img src="{{personeImage}}" alt="{{personName}}" />
+                </div>
+
+                <div class="health-badge">
+                    <span>{{badgeText}}</span>
+                    <small>{{badgeSmallText}}</small>
+                </div>
+            </div>
+
+            <p class="mini-title">{{message}}</p>
+
+            <h1 class="person-name">
+                {{personName}}
+            </h1>
+
+            <p class="title">
+                {{title}}
+            </p>
+
+            <div class="wish-box">
+                <span>{{wishIcon}}</span>
+                <p>
+                    {{wishText}}
+                </p>
+            </div>
+
+            <div class="dua-box">
+                <span>🤲</span>
+                <p>
+                    {{duaText}}
+                </p>
+            </div>
+
+            <section class="feelings-section" data-feature="feelings" data-approval-mode="manual"
+                data-prevent-duplicate="true" data-rate-limit-minutes="5">
+                <div class="feelings-header">
+                    <span class="feelings-icon">💌</span>
+                    <div>
+                        <h2>شارك دعاءك</h2>
+                        <p>اكتب رسالة جميلة ودعوة صادقة</p>
+                    </div>
+                </div>
+
+                <div class="interaction-card">
+                    <p class="feeling-notice" data-feeling-notice>
+                        تنبيه: رسالتك لن تظهر مباشرة، وستحتاج موافقة صاحب التصميم قبل نشرها للزوار.
+                    </p>
+
+                    <div class="form-group">
+                        <label for="feelingName">اسمك</label>
+                        <input id="feelingName" class="interaction-input" type="text" placeholder="اكتب اسمك"
+                            maxlength="60" data-feeling-name />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feelingMessage">رسالتك</label>
+                        <textarea id="feelingMessage" class="interaction-textarea"
+                            placeholder="اكتب دعاءك أو تهنئتك هنا..." maxlength="220" rows="4"
+                            data-feeling-message></textarea>
+                    </div>
+
+                    <button type="button" class="interaction-submit" data-send-feeling>
+                        إرسال الرسالة
+                    </button>
+
+                    <p class="interaction-message" data-feeling-result></p>
+                </div>
+
+                <div class="feelings-list" data-feelings-list></div>
+            </section>
+
+            <div class="bottom-icons" aria-hidden="true">
+                <span>🌿</span>
+                <span>🤍</span>
+                <span>🕊️</span>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        (function () {
+            var feelingsSection = document.querySelector('[data-feature="feelings"]');
+            if (!feelingsSection) return;
+
+            var notice = feelingsSection.querySelector('[data-feeling-notice]');
+            if (!notice) return;
+
+            function updateFeelingNotice() {
+                var approvalMode = feelingsSection.getAttribute('data-approval-mode');
+
+                if (!approvalMode || approvalMode.indexOf('{{') === 0) {
+                    approvalMode = 'manual';
+                }
+
+                if (approvalMode === 'auto') {
+                    notice.textContent = 'رسالتك ستظهر مباشرة بعد الإرسال.';
+                } else {
+                    notice.textContent = 'تنبيه: رسالتك لن تظهر مباشرة، وستحتاج موافقة صاحب التصميم قبل نشرها للزوار.';
+                }
+            }
+
+            updateFeelingNotice();
+
+            var observer = new MutationObserver(updateFeelingNotice);
+
+            observer.observe(feelingsSection, {
+                attributes: true,
+                attributeFilter: ['data-approval-mode']
+            });
+        })();
+    </script>
+</body>
+
+</html>

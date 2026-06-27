@@ -1,0 +1,251 @@
+{
+    "id": "get-well-soon-1",
+    "name": "تهنئة بالسلامة",
+    "version": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "type": "custom",
+    "language": "ar",
+    "direction": "rtl",
+    "html": "index.html",
+    "css": "style.css",
+    "fields": [
+        {
+            "required": true,
+            "key": "theme",
+            "defaultValue": "mint",
+            "label": "نوع التصميم",
+            "type": "select",
+            "options": [
+                {
+                    "value": "mint",
+                    "label": "أخضر هادئ"
+                },
+                {
+                    "value": "blue",
+                    "label": "أزرق ناعم"
+                },
+                {
+                    "value": "rose",
+                    "label": "وردي لطيف"
+                }
+            ]
+        },
+        {
+            "key": "showPersoneImage",
+            "label": "إظهار صورة الشخص",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "label": "صورة الشخص",
+            "type": "image",
+            "defaultValue": "https://placehold.co/420x420/ecfdf5/065f46?text=Safhat",
+            "key": "personeImage",
+            "required": true,
+            "hint": "ارفع صورة واضحة للشخص",
+            "visibleWhen": {
+                "field": "showPersoneImage",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showPersoneImage",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showIcon",
+            "label": "إظهار الأيقونة",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "key": "icon",
+            "required": true,
+            "defaultValue": "🌿",
+            "label": "الأيقونة",
+            "type": "icon",
+            "options": [
+                {
+                    "value": "🌿",
+                    "label": "🌿"
+                },
+                {
+                    "value": "🤍",
+                    "label": "🤍"
+                },
+                {
+                    "value": "💐",
+                    "label": "💐"
+                },
+                {
+                    "value": "✨",
+                    "label": "✨"
+                },
+                {
+                    "value": "🕊️",
+                    "label": "🕊️"
+                },
+                {
+                    "value": "🤲",
+                    "label": "🤲"
+                }
+            ],
+            "visibleWhen": {
+                "field": "showIcon",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showIcon",
+                "equals": "yes"
+            }
+        },
+        {
+            "type": "text",
+            "label": "النص العلوي",
+            "maxLength": 80,
+            "required": true,
+            "key": "topLabel",
+            "defaultValue": "حمدًا لله على السلامة"
+        },
+        {
+            "type": "text",
+            "label": "عنوان التهنئة",
+            "maxLength": 80,
+            "required": true,
+            "minLength": 3,
+            "key": "title",
+            "defaultValue": "تهنئة بالسلامة"
+        },
+        {
+            "type": "text",
+            "label": "اسم الشخص",
+            "maxLength": 40,
+            "placeholder": "مثال: محمد",
+            "minLength": 2,
+            "required": true,
+            "key": "personName",
+            "defaultValue": "محمد",
+            "designControls": {
+                "font": {
+                    "enabled": true,
+                    "label": "خط اسم الشخص",
+                    "selector": ".person-name"
+                }
+            }
+        },
+        {
+            "type": "text",
+            "label": "نص الشارة",
+            "key": "badgeText",
+            "defaultValue": "بخير",
+            "required": true,
+            "placeholder": "مثال: بخير",
+            "minLength": 1,
+            "maxLength": 12
+        },
+        {
+            "type": "text",
+            "label": "النص الصغير في الشارة",
+            "key": "badgeSmallText",
+            "defaultValue": "الحمدلله",
+            "required": true,
+            "placeholder": "مثال: الحمدلله",
+            "minLength": 2,
+            "maxLength": 20
+        },
+        {
+            "key": "message",
+            "required": true,
+            "minLength": 5,
+            "defaultValue": "سلامتك فرحة لنا جميعًا",
+            "maxLength": 160,
+            "type": "textarea",
+            "label": "نص التهنئة القصير"
+        },
+        {
+            "key": "wishIcon",
+            "required": true,
+            "defaultValue": "💚",
+            "label": "أيقونة رسالة التهنئة",
+            "type": "icon",
+            "options": [
+                {
+                    "value": "💚",
+                    "label": "💚"
+                },
+                {
+                    "value": "🌿",
+                    "label": "🌿"
+                },
+                {
+                    "value": "🤍",
+                    "label": "🤍"
+                },
+                {
+                    "value": "💐",
+                    "label": "💐"
+                },
+                {
+                    "value": "✨",
+                    "label": "✨"
+                }
+            ]
+        },
+        {
+            "key": "wishText",
+            "required": true,
+            "minLength": 10,
+            "defaultValue": "الحمد لله الذي منّ عليك بالسلامة، ونسأل الله أن يتمم عليك الصحة والعافية، وأن يجعل ما مررت به طهورًا ورفعة.",
+            "maxLength": 220,
+            "type": "textarea",
+            "label": "رسالة التهنئة"
+        },
+        {
+            "key": "duaText",
+            "required": true,
+            "minLength": 10,
+            "defaultValue": "اللهم رب الناس أذهب البأس، واشفِ أنت الشافي، لا شفاء إلا شفاؤك، شفاءً لا يغادر سقمًا.",
+            "maxLength": 220,
+            "type": "textarea",
+            "label": "نص الدعاء"
+        }
+    ],
+    "features": {
+        "feelings": {
+            "enabled": true,
+            "approvalMode": "manual",
+            "preventDuplicate": true,
+            "rateLimitMinutes": 5,
+            "title": "شارك دعاءك",
+            "description": "اكتب رسالة جميلة ودعوة صادقة لصاحب التصميم"
+        }
+    }
+}
