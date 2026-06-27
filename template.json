@@ -15,6 +15,8 @@
             "defaultValue": "mint",
             "label": "نوع التصميم",
             "type": "select",
+            "formTab": "design",
+            "group": "style",
             "options": [
                 {
                     "value": "mint",
@@ -31,8 +33,8 @@
             ]
         },
         {
-            "key": "showPersoneImage",
-            "label": "إظهار صورة الشخص",
+            "key": "showTopLabel",
+            "label": "إظهار النص العلوي",
             "type": "select",
             "formTab": "design",
             "group": "visibility",
@@ -51,18 +53,18 @@
             "width": "half"
         },
         {
-            "label": "صورة الشخص",
-            "type": "image",
-            "defaultValue": "https://placehold.co/420x420/ecfdf5/065f46?text=Safhat",
-            "key": "personeImage",
+            "type": "text",
+            "label": "النص العلوي",
+            "maxLength": 80,
             "required": true,
-            "hint": "ارفع صورة واضحة للشخص",
+            "key": "topLabel",
+            "defaultValue": "حمدًا لله على السلامة",
             "visibleWhen": {
-                "field": "showPersoneImage",
+                "field": "showTopLabel",
                 "equals": "yes"
             },
             "requiredWhen": {
-                "field": "showPersoneImage",
+                "field": "showTopLabel",
                 "equals": "yes"
             }
         },
@@ -128,38 +130,60 @@
             }
         },
         {
-            "type": "text",
-            "label": "النص العلوي",
-            "maxLength": 80,
+            "key": "showPersoneImage",
+            "label": "إظهار صورة المرسل له",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
             "required": true,
-            "key": "topLabel",
-            "defaultValue": "حمدًا لله على السلامة"
-        },
-        {
-            "type": "text",
-            "label": "عنوان التهنئة",
-            "maxLength": 80,
-            "required": true,
-            "minLength": 3,
-            "key": "title",
-            "defaultValue": "تهنئة بالسلامة"
-        },
-        {
-            "type": "text",
-            "label": "اسم الشخص",
-            "maxLength": 40,
-            "placeholder": "مثال: محمد",
-            "minLength": 2,
-            "required": true,
-            "key": "personName",
-            "defaultValue": "محمد",
-            "designControls": {
-                "font": {
-                    "enabled": true,
-                    "label": "خط اسم الشخص",
-                    "selector": ".person-name"
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
                 }
+            ],
+            "width": "half"
+        },
+        {
+            "label": "صورة المرسل له",
+            "type": "image",
+            "defaultValue": "https://placehold.co/420x420/ecfdf5/065f46?text=Safhat",
+            "key": "personeImage",
+            "required": true,
+            "hint": "ارفع صورة واضحة للشخص",
+            "visibleWhen": {
+                "field": "showPersoneImage",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showPersoneImage",
+                "equals": "yes"
             }
+        },
+        {
+            "key": "showHealthBadge",
+            "label": "إظهار الشارة على الصورة",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
         },
         {
             "type": "text",
@@ -169,7 +193,15 @@
             "required": true,
             "placeholder": "مثال: بخير",
             "minLength": 1,
-            "maxLength": 12
+            "maxLength": 12,
+            "visibleWhen": {
+                "field": "showHealthBadge",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showHealthBadge",
+                "equals": "yes"
+            }
         },
         {
             "type": "text",
@@ -179,7 +211,35 @@
             "required": true,
             "placeholder": "مثال: الحمدلله",
             "minLength": 2,
-            "maxLength": 20
+            "maxLength": 20,
+            "visibleWhen": {
+                "field": "showHealthBadge",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showHealthBadge",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showMessage",
+            "label": "إظهار نص التهنئة القصير",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
         },
         {
             "key": "message",
@@ -188,7 +248,211 @@
             "defaultValue": "سلامتك فرحة لنا جميعًا",
             "maxLength": 160,
             "type": "textarea",
-            "label": "نص التهنئة القصير"
+            "label": "نص التهنئة القصير",
+            "visibleWhen": {
+                "field": "showMessage",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showMessage",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showRecipient",
+            "label": "إظهار المرسل له",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "type": "text",
+            "label": "عبارة المرسل له",
+            "maxLength": 40,
+            "required": true,
+            "key": "recipientLabel",
+            "defaultValue": "إلى الغالي",
+            "visibleWhen": {
+                "field": "showRecipient",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showRecipient",
+                "equals": "yes"
+            }
+        },
+        {
+            "type": "text",
+            "label": "اسم المرسل له",
+            "maxLength": 40,
+            "placeholder": "مثال: محمد",
+            "minLength": 2,
+            "required": true,
+            "key": "personName",
+            "defaultValue": "محمد",
+            "visibleWhen": {
+                "field": "showRecipient",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showRecipient",
+                "equals": "yes"
+            },
+            "designControls": {
+                "font": {
+                    "enabled": true,
+                    "label": "خط اسم المرسل له",
+                    "selector": ".person-name"
+                }
+            }
+        },
+        {
+            "key": "showTitle",
+            "label": "إظهار عنوان التهنئة",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "type": "text",
+            "label": "عنوان التهنئة",
+            "maxLength": 80,
+            "required": true,
+            "minLength": 3,
+            "key": "title",
+            "defaultValue": "تهنئة بالسلامة",
+            "visibleWhen": {
+                "field": "showTitle",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showTitle",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showSender",
+            "label": "إظهار المرسل",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "type": "text",
+            "label": "عبارة المرسل",
+            "maxLength": 40,
+            "required": true,
+            "key": "senderLabel",
+            "defaultValue": "من",
+            "visibleWhen": {
+                "field": "showSender",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showSender",
+                "equals": "yes"
+            }
+        },
+        {
+            "type": "text",
+            "label": "اسم المرسل",
+            "maxLength": 40,
+            "placeholder": "مثال: عائلتك",
+            "minLength": 2,
+            "required": true,
+            "key": "senderName",
+            "defaultValue": "أحبابك",
+            "visibleWhen": {
+                "field": "showSender",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showSender",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showWishBox",
+            "label": "إظهار رسالة التهنئة",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "key": "showWishIcon",
+            "label": "إظهار أيقونة رسالة التهنئة",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half",
+            "visibleWhen": {
+                "field": "showWishBox",
+                "equals": "yes"
+            }
         },
         {
             "key": "wishIcon",
@@ -217,7 +481,15 @@
                     "value": "✨",
                     "label": "✨"
                 }
-            ]
+            ],
+            "visibleWhen": {
+                "field": "showWishIcon",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showWishIcon",
+                "equals": "yes"
+            }
         },
         {
             "key": "wishText",
@@ -226,7 +498,59 @@
             "defaultValue": "الحمد لله الذي منّ عليك بالسلامة، ونسأل الله أن يتمم عليك الصحة والعافية، وأن يجعل ما مررت به طهورًا ورفعة.",
             "maxLength": 220,
             "type": "textarea",
-            "label": "رسالة التهنئة"
+            "label": "رسالة التهنئة",
+            "visibleWhen": {
+                "field": "showWishBox",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showWishBox",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showDuaBox",
+            "label": "إظهار الدعاء",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "key": "showDuaIcon",
+            "label": "إظهار أيقونة الدعاء",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half",
+            "visibleWhen": {
+                "field": "showDuaBox",
+                "equals": "yes"
+            }
         },
         {
             "key": "duaText",
@@ -235,7 +559,55 @@
             "defaultValue": "اللهم رب الناس أذهب البأس، واشفِ أنت الشافي، لا شفاء إلا شفاؤك، شفاءً لا يغادر سقمًا.",
             "maxLength": 220,
             "type": "textarea",
-            "label": "نص الدعاء"
+            "label": "نص الدعاء",
+            "visibleWhen": {
+                "field": "showDuaBox",
+                "equals": "yes"
+            },
+            "requiredWhen": {
+                "field": "showDuaBox",
+                "equals": "yes"
+            }
+        },
+        {
+            "key": "showFeelingsSection",
+            "label": "إظهار قسم رسائل الزوار",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
+        },
+        {
+            "key": "showBottomIcons",
+            "label": "إظهار الأيقونات السفلية",
+            "type": "select",
+            "formTab": "design",
+            "group": "visibility",
+            "required": true,
+            "defaultValue": "yes",
+            "options": [
+                {
+                    "label": "نعم",
+                    "value": "yes"
+                },
+                {
+                    "label": "لا",
+                    "value": "no"
+                }
+            ],
+            "width": "half"
         }
     ],
     "features": {

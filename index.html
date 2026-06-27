@@ -9,7 +9,24 @@
 </head>
 
 <body>
-    <main class="get-well-page theme-{{theme}} show-person-{{showPersoneImage}} show-icon-{{showIcon}}">
+    <main class="
+        get-well-page
+        theme-{{theme}}
+        show-top-label-{{showTopLabel}}
+        show-icon-{{showIcon}}
+        show-person-{{showPersoneImage}}
+        show-health-badge-{{showHealthBadge}}
+        show-message-{{showMessage}}
+        show-recipient-{{showRecipient}}
+        show-title-{{showTitle}}
+        show-sender-{{showSender}}
+        show-wish-{{showWishBox}}
+        show-wish-icon-{{showWishIcon}}
+        show-dua-{{showDuaBox}}
+        show-dua-icon-{{showDuaIcon}}
+        show-feelings-{{showFeelingsSection}}
+        show-bottom-icons-{{showBottomIcons}}
+    ">
 
         <div class="page-pattern" aria-hidden="true"></div>
 
@@ -42,23 +59,31 @@
 
             <p class="mini-title">{{message}}</p>
 
-            <h1 class="person-name">
-                {{personName}}
-            </h1>
+            <div class="recipient-block">
+                <span>{{recipientLabel}}</span>
+                <h1 class="person-name">
+                    {{personName}}
+                </h1>
+            </div>
 
             <p class="title">
                 {{title}}
             </p>
 
+            <div class="sender-block">
+                <span>{{senderLabel}}</span>
+                <strong>{{senderName}}</strong>
+            </div>
+
             <div class="wish-box">
-                <span>{{wishIcon}}</span>
+                <span class="wish-icon">{{wishIcon}}</span>
                 <p>
                     {{wishText}}
                 </p>
             </div>
 
             <div class="dua-box">
-                <span>🤲</span>
+                <span class="dua-icon">🤲</span>
                 <p>
                     {{duaText}}
                 </p>

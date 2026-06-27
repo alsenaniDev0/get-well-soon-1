@@ -747,3 +747,127 @@ body {
         font-size: 16px;
     }
 }
+
+/* Extra blocks */
+.recipient-block {
+    position: relative;
+    z-index: 3;
+}
+
+.recipient-block span {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1.7;
+}
+
+.sender-block {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 18px;
+    padding: 9px 16px;
+
+    position: relative;
+    z-index: 3;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1.6;
+
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.07);
+}
+
+.sender-block strong {
+    color: var(--main-dark);
+    font-size: 14px;
+    font-weight: 950;
+}
+
+/* Visibility Controls */
+.show-top-label-no .top-label {
+    display: none;
+}
+
+.show-icon-no .top-icon {
+    display: none;
+}
+
+.show-person-no .photo-wrap {
+    width: 132px;
+    height: 132px;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.show-person-no .photo-ring {
+    display: none;
+}
+
+.show-person-no .health-badge {
+    width: 118px;
+    height: 118px;
+
+    position: static;
+
+    border-radius: 34px;
+    animation: floatPhoto 3.5s ease-in-out infinite;
+}
+
+.show-health-badge-no .health-badge {
+    display: none;
+}
+
+.show-message-no .mini-title {
+    display: none;
+}
+
+.show-recipient-no .recipient-block {
+    display: none;
+}
+
+.show-title-no .title {
+    display: none;
+}
+
+.show-sender-no .sender-block {
+    display: none;
+}
+
+.show-wish-no .wish-box {
+    display: none;
+}
+
+.show-wish-icon-no .wish-icon {
+    display: none;
+}
+
+.show-dua-no .dua-box {
+    display: none;
+}
+
+.show-dua-icon-no .dua-icon {
+    display: none;
+}
+
+.show-feelings-no .feelings-section {
+    display: none;
+}
+
+.show-bottom-icons-no .bottom-icons {
+    display: none;
+}
