@@ -281,7 +281,7 @@
         {
             "type": "text",
             "label": "عبارة المرسل له",
-            "maxLength": 40,
+            "maxLength": 200,
             "required": true,
             "key": "recipientLabel",
             "defaultValue": "إلى الغالي",
