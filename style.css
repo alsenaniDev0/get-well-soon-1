@@ -865,7 +865,7 @@ body {
 }
 
 .show-feelings-no .feelings-section {
-    display: none;
+    display: none !important;
 }
 
 .show-bottom-icons-no .bottom-icons {
